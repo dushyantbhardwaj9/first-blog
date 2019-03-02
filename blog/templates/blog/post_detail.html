@@ -19,16 +19,15 @@
         <div class="col-md-8">
 
 {% block content %}
-    {% for post in posts %}
-        <div class="post">
-            
-    <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-            <p>{{ post.text|linebreaksbr }}</p>
+    <div class="post">
+        {% if post.published_date %}
             <div class="date">
                 {{ post.published_date }}
             </div>
-        </div>
-    {% endfor %}
+        {% endif %}
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.text|linebreaksbr }}</p>
+    </div>
 {% endblock %}
         </div>
     </div>
